@@ -17,6 +17,7 @@ You will need to construct a config file to point your master to your workers in
 
 A simple local example of a config is as follows.
 
+```json
 {
     "workers": [
         {
@@ -33,11 +34,29 @@ A simple local example of a config is as follows.
         }
     ]
 }
+```
 
 #### Workers on Servers
 To launch the worker nodes on servers, simply log into the server, clone the repo, create the worker virtual environment with the required dependencies, and then call `python worker_mesh_server.py <port-number>`. If you have a particularly large number of servers, the pssh command should be useful.
 
+A config file for two remote servers looks like this:
+
+```json
+{
+    "workers": [
+        {
+            "url": "http://my-secret-server:5000/mesh/generate/"
+        },
+        {
+            "url": "http://my-other-secret-server:5000/mesh/generate/"
+        }
+    ]
+}
+```
+
 #### Workers on AWS Lambda
+
+You can host the `worker` nodes on AWS Lambda in order to scale the worker pool. For more information, see [the AWS Lambda mesh-worker deploy documentation](docs/Lambdas.md).
 
 #### Master Node
 To launch the master, load the master virtual environment and then (from within the master directory) call `python master_mesh_server.py /path/to/config/file`. The master will assign meshing jobs to workers cyclically based on the order specified in the config. At present, the master exposes two endpoints: /mesh/file/ and /mesh/janelia/. The /mesh/file/ endpoint accepts binary mask data encoded as a numpy array saved using np.save. The /mesh/janelia/ endpoint accepts data in the form of binary blocks as specified in Janelia's block streaming format.
