@@ -3,6 +3,12 @@
 Set of tools for meshing annotated blocks of data
 using a master server and a family of workers.
 
+## Overview
+
+This system uses a master/worker architecture to delegate meshing (via marching-cubes implementation) to worker nodes, and mesh stitching and recombination to the central master node.
+
+Worker nodes are specified in a configuration file, which is passed to the master process as a command-line argument. Because the worker node is an HTTP server, an arbitrary mix of local, remote, and serverless HTTP resources may be used by the same meshing service master node, and multiple master nodes may point to the same worker node.
+
 
 ## Installation
 Clone the repository into a designated local parent directory. Navigate into the directory and construct virtual environments (using either virtualenv or conda) for each of the master and worker nodes.
