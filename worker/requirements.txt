@@ -9,7 +9,7 @@ click==6.7
 Cython==0.27.3
 docutils==0.14
 durationpy==0.5
-Flask==0.12.2
+Flask==1.0
 future==0.16.0
 hjson==3.0.1
 idna==2.6
