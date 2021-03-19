@@ -8,7 +8,7 @@ Flask==1.0
 idna==2.6
 intern==0.9.6
 itsdangerous==0.24
-Jinja2==2.10.1
+Jinja2==2.11.3
 MarkupSafe==1.0
 mock==2.0.0
 nose2==0.7.4
